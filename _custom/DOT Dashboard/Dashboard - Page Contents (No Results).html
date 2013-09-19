@@ -1,0 +1,272 @@
+<p id="dashboard-status" class="small"></p>
+<img id="dashboard-spinner" src="#" alt="Loading" />
+
+<div id="dashboard-util">
+  <a class="dashboard-new-asset" href="#" title="Add New Asset">Add New Asset</a>
+  <div id="dashboard-group-by">
+    <input type="radio" id="group-by-type" name="group-by" checked="checked" /><label for="group-by-type">Group by Type</label>
+    <input type="radio" id="group-by-status" name="group-by" /><label for="group-by-status">Group by Status</label>
+    <input type="radio" id="group-by-expiry" name="group-by" /><label for="group-by-expiry">Group by Expiry</label>
+  </div>
+</div>
+
+
+<div id="dashboard-tabs">
+  <ul class="clearfix">
+    <li class="dashboard-group-by-none"><a id="dashboard-tabs-all-link" href="#dashboard-tabs-all">All (<span>...</span>)</a></li>
+
+    <li class="dashboard-group-by-type"><a id="dashboard-tabs-pages-link" href="#dashboard-tabs-pages">Pages (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-type"><a id="dashboard-tabs-docs-link" href="#dashboard-tabs-docs">Documents  (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-type"><a id="dashboard-tabs-image-link" href="#dashboard-tabs-image">Images  (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-type"><a id="dashboard-tabs-media-link" href="#dashboard-tabs-media">Media  (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-type"><a id="dashboard-tabs-other-link" href="#dashboard-tabs-other">Other  (<span>...</span>)</a></li>
+
+    <li class="dashboard-group-by-status"><a id="dashboard-tabs-live-link" href="#dashboard-tabs-live">Live  (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-status"><a id="dashboard-tabs-up-for-review-link" href="#dashboard-tabs-up-for-review">Up for Review  (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-status"><a id="dashboard-tabs-under-construction-link" href="#dashboard-tabs-under-construction">Under Construction  (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-status"><a id="dashboard-tabs-safe-edit-link" href="#dashboard-tabs-safe-edit">Safe Edit  (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-status"><a id="dashboard-tabs-pending-approval-link" href="#dashboard-tabs-pending-approval">Pending Approval  (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-status"><a id="dashboard-tabs-pending-go-live-link" href="#dashboard-tabs-pending-go-live">Pending Go Live  (<span>...</span>)</a></li>
+
+    <li class="dashboard-group-by-expiry"><a id="dashboard-tabs-expired-link" href="#dashboard-tabs-expired">Expired  (<span>...</span>)</a></li>
+    <li class="dashboard-group-by-expiry"><a id="dashboard-tabs-expired-month-link" href="#dashboard-tabs-expired-month">Expires 1 Month  (<span>...</span>)</a></li>
+  </ul>
+  <div id="dashboard-tabs-all">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-pages">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-docs">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-image">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-media">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-other">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-live">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-up-for-review">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-under-construction">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-safe-edit">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-pending-approval">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-pending-go-live">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-expired">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="dashboard-tabs-expired-month">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="#">Name</a></th>
+          <th><a href="#">ID</a></th>
+          <th><a href="#">Type</a></th>
+          <th><a href="#">Status</a></th>
+          <th><a href="#">Expiry</a></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var DOT_Dashboard_Config = {
+    jsapiKey: '7253086690',
+    maintainerRoleID: 1029,
+    userID: '%globals_user_assetid%',
+    assetListingURL: '%asset_url%',
+    assetListingRootID: %globals_site_assetid%,
+    hideEmptyTabs: true,
+    showGroupByOptions: true,
+    useMetadataExpiredFlag: true,
+    urlLoading: './?a=55054'
+  }
+</script>

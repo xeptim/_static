@@ -1,0 +1,85 @@
+.dot-dashboard-hide-empty #dashboard-tabs li.empty { display: none !important; }
+
+#dashboard-status { color: grey; }
+
+/* add new asset link */
+a.dashboard-new-asset,
+a.dashboard-new-asset:link,
+a.dashboard-new-asset:visited,
+a.dashboard-new-asset:hover,
+a.dashboard-new-asset:active {
+  display: inline-block;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  color: white !important;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+  border: solid 1px black;
+  background-color: black;
+  border-radius: 0.5em;
+}
+
+/* initial visibility */
+#dashboard-tabs, #dashboard-util, .dashboard-group-by-status, .dashboard-group-by-expiry { display: none; }
+
+/* table styling */
+#dashboard-tabs table { width: 100%; }
+#dashboard-tabs table th, #dashboard-tabs table td { padding: 0.25em 0.5em; }
+#dashboard-tabs table th { padding-right: 20px; }
+#dashboard-tabs table th a { color: #000000; display: block; border: none; }
+
+.dashboard-icon-cell img { margin: 0; }
+.dashboard-name-cell span { font-weight: bold; border: 1px solid #CD0A0A; color: #CD0A0A; background-color: #FEF1EC; border-radius: 4px; padding: 0 0.25em; }
+.dashboard-status-cell span { border: 1px solid #AAAAAA; display: block; text-align: center; white-space: nowrap; border-radius: 4px; padding: 0.1em 0.25em; }
+
+/* table column widths and wrapping */
+.dashboard-icon-cell { white-space: nowrap; }
+.dashboard-name-cell { width: 100%; }
+.dashboard-id-cell { white-space: nowrap; }
+.dashboard-type-cell { white-space: nowrap; }
+.dashboard-status-cell { white-space: nowrap; }
+.dashboard-expiry-cell { white-space: nowrap; }
+.dashboard-link-cell { white-space: nowrap; }
+
+/* utility element styling */
+#dashboard-util { overflow: hidden; font-weight: bold; }
+#dashboard-util #dashboard-group-by { overflow: visible; float: right; }
+
+#dashboard-tabs ul { font-weight: bold; }
+#dashboard-tabs ul a { border: none; }
+
+/* sort headers */
+.header a:after { content: "\f0dc"; font-family: "FontAwesome"; margin-left: 0.25em; color: grey; }
+.headerSortDown a:after { content: "\f0dd"; color: inherit; }
+.headerSortUp a:after { content: "\f0de"; color: inherit; }
+
+
+
+/* workflow links */
+.dashboard-workflow-link { display: none; }
+
+.dashboard-status-pending_approval .dashboard-workflow-link { display: inline; }
+.dashboard-status-approved_to_go_live .dashboard-workflow-link { display: inline; }
+.dashboard-status-up_for_review .dashboard-workflow-link { display: inline; }
+.dashboard-status-safe_editing_pending_approval .dashboard-workflow-link { display: inline; }
+.dashboard-status-safe_edit_approved_to_go_live .dashboard-workflow-link { display: inline; }
+
+.dashboard-status-pending_approval .dashboard-open-link { display: none; }
+.dashboard-status-approved_to_go_live .dashboard-open-link { display: none; }
+.dashboard-status-up_for_review .dashboard-open-link { display: none; }
+.dashboard-status-safe_editing_pending_approval .dashboard-open-link { display: none; }
+.dashboard-status-safe_edit_approved_to_go_live .dashboard-open-link { display: none; }
+
+/* status colurs */
+.dashboard-status-under_construction .dashboard-status-cell span { background: #AACCDD; }
+.dashboard-status-pending_approval .dashboard-status-cell span { background: #DCD2E6; }
+.dashboard-status-approved_to_go_live .dashboard-status-cell span { background: #F4D425; }
+.dashboard-status-live .dashboard-status-cell span { background: #DBF18A; }
+.dashboard-status-up_for_review .dashboard-status-cell span { background: #50D000; }
+.dashboard-status-safe_editing .dashboard-status-cell span { background: #F25C86; }
+.dashboard-status-safe_editing_pending_approval .dashboard-status-cell span { background: #CC7CC7; }
+.dashboard-status-safe_edit_approved_to_go_live .dashboard-status-cell span { background: #FF9A00; }
+.dashboard-status-archived .dashboard-status-cell span { background: #C2B0A0; }

@@ -1,0 +1,168 @@
+<div id="sa-panel">
+  <div class="sa-asset-info preview">
+    Previews:<br />
+    <a href="%globals_asset_url%/_nocache?SQ_PAINT_LAYOUT_NAME=preview_homepage_news" target="_blank">Homepage - News</a><br />
+    <a href="%globals_asset_url%/_nocache?SQ_PAINT_LAYOUT_NAME=preview_homepage_feature" target="_blank">Homepage - Feature</a><br />
+  </div>
+  <div class="sa-asset-info">
+    Asset ID: %globals_asset_assetid%<br />
+    <span class="sa-status" style="background:%globals_asset_status_colour%">%globals_asset_status_description%</span><br />
+    Maintainer:<br />
+    %globals_asset_role_1029^replace:,:<br />%
+  </div>
+  <input id="btn-sa-audit" class="first-button" type="button" value="Audit" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+var css = ' \
+#sa-panel { width: 100%; position: fixed; bottom: 0; text-align: center; overflow: visible; } \
+.sa-audit-progress { background: lightblue  url("./?a=62865") center left no-repeat !important; border-radius: 4px; padding-left: 16px; border: 1px solid blue   !important; } \
+.sa-audit-pass     { background: lightgreen url("./?a=62864") center left no-repeat !important; border-radius: 4px; padding-left: 16px; border: 1px solid green  !important; } \
+.sa-audit-warn     { background: white      url("./?a=62866") center left no-repeat !important; border-radius: 4px; padding-left: 16px; border: 1px solid orange !important; } \
+.sa-audit-fail     { background: pink       url("./?a=62863") center left no-repeat !important; border-radius: 4px; padding-left: 16px; border: 1px solid red    !important; } \
+.sa-audit-warn:after { vertical-align: top; color: orange;  text-decoration: none; font-size: 11px; text-decoration: none; margin-left: 3px; } \
+.sa-audit-fail:after { vertical-align: top; color: darkred; text-decoration: none; font-size: 11px; text-decoration: none; margin-left: 3px; } \
+.sa-info-emptylink:after { content: "empty link"; } \
+.sa-info-noteslink:after { content: "notes link"; } \
+.sa-info-doublehttp:after { content: "double http"; } \
+.sa-info-matrixsyntax:after { content: "matrix syntax"; } \
+.sa-info-idmissing:after { content: "id not found"; } \
+.sa-info-idmultiple:after { content: "id found multiple"; } \
+.sa-asset-info { overflow: visible; position: absolute; bottom: 0; right: 0; background: #DADADA; font-size: 11px; border-radius: 4px; border: 1px solid grey; padding: 2px 6px; } \
+.sa-asset-info.preview { left: 0; right: auto; } \
+.sa-asset-info .sa-status { border-radius: 4px; border: 1px solid grey; font-size: 9px; padding: 1px 6px 0 6px; } \
+.sa-audit table { background: lightblue !important; } \
+.sa-audit table thead th { background: lightgreen; } \
+.sa-audit table thead td { background: pink; } \
+.sa-audit table tbody th { background: pink; } \
+.sa-audit table tbody th:first-child { background: lightgreen; } \
+.sa-audit font { background: pink url("./?a=62863") center left no-repeat !important; border-radius: 4px; padding-left: 16px; border: 1px solid red    !important; } \
+.sa-audit font:after { content: "font tag"; vertical-align: top; color: darkred; text-decoration: none; font-size: 11px; text-decoration: none; margin-left: 3px; } \
+.sa-audit { color: orange !important; } \
+.sa-audit p, .sa-audit li, .sa-audit th, .sa-audit td, .sa-audit h2, .sa-audit h3, .sa-audit h4 { color: grey !important; } \
+';
+
+$( function() {
+  $('head').append($('<style>' + css + '</style>')); // need to do this way - IE8 makes style elements read-only once created
+  $('#btn-sa-audit').click( sa_audit );
+});
+
+function sa_audit() {
+  
+  $('.sa-audit-enabled').not('.sa-audit-disabled').addClass('sa-audit');
+
+  $('.sa-audit-enabled a[href]').not('.sa-audit-disabled a').each( function(i) {
+    var obj = $(this);
+    var url = $(this).attr('href');
+
+    // empty links
+    if (!obj.text().length) {
+      obj.addClass('sa-audit-fail').addClass('sa-info-emptylink');
+      return;
+    }
+
+    // notes links
+    if (url.indexOf('notes://') >= 0) {
+      obj.addClass('sa-audit-warn').addClass('sa-info-noteslink');
+      return;
+    }
+
+    // double http
+    if (url.indexOf('http://http') == 0) {
+      obj.addClass('sa-audit-fail').addClass('sa-info-doublehttp');
+      return;
+    }
+
+    // matrix syntax
+    if (url.indexOf('?a=') > 0) {
+      obj.addClass('sa-audit-fail').addClass('sa-info-matrixsyntax');
+      return;
+    }
+
+    // same-page anchors
+    if (url.indexOf('#') == 0) {
+      // look for the element
+      switch ($('[id=' + url.substr(1) + ']').length) {
+        case 0:
+          obj.addClass('sa-audit-fail').addClass('sa-info-idmissing');
+          break;
+        case 1:
+          obj.addClass('sa-audit-pass');
+          break;
+        default:
+          obj.addClass('sa-audit-fail').addClass('sa-info-idmultiple');
+          break;
+      }
+      return;
+    }
+
+
+    // massage url if email link
+    if (url.indexOf('mailto:') >= 0) {
+      url = 'http://' + url.substring(url.lastIndexOf('@') + 1);
+      // strip off any query part
+      if (url.indexOf('?') >= 0) {
+        url = url.substring(0, url.indexOf('?'));
+      }
+    }
+
+    // remove anchor link parts
+    if (url.indexOf('#') >= 0) {
+      url = url.substring(0, url.indexOf('#'));
+    }
+
+    obj.addClass('sa-audit-progress');
+
+    // check if the url is same domain - use JS built-in DOM value for url (this.href) instead of jquery value for href to deal with relative url's
+    if (window.location.hostname == this.href.split('/')[2]) {
+
+      // do local lookup
+      $.ajax({
+        type: 'HEAD',
+        url: this.href,
+        success: function(data, textStatus, jqXHR) {
+          obj.addClass('sa-audit-pass');
+        },
+        error: function(jqXHR, textStatus, e) {
+          if (jqXHR.status == 200) {
+            obj.addClass('sa-audit-pass');
+          }
+          else {
+            obj.addClass('sa-audit-fail');
+          }
+        }
+      }); // ajax
+    }
+
+    else {
+      // do external lookup
+      obj.addClass('sa-audit-link-' + i);
+      $.ajax({
+        type: 'GET',
+        url: 'http://d00018/dotmon/asp/checkurl.asp?url=' + url + '&id=' + i + '&funcname=sa_process_link',
+        dataType: 'script',
+        crossDomain: true
+      }); // ajax
+    }
+
+  }); // each
+}
+
+function sa_process_link(i, status) {
+  var obj = $('.sa-audit-link-' + i);
+  switch (status) {
+    case 200:
+    case 401:
+    case 403:
+      obj.addClass('sa-audit-pass');
+      break;
+    default:
+      obj.addClass('sa-audit-fail');
+      break;
+  }
+}
+
+//]]>
+</script>

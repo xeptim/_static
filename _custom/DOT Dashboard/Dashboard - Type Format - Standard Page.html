@@ -1,0 +1,12 @@
+<tr id="dashboard-row-%asset_assetid%" class="dashboard-type-%asset_type^underscore^lowercase% dashboard-status-%asset_status_description^underscore^lowercase%">
+  <td class="dashboard-icon-cell">%asset_type_icon%</td>
+  <td class="dashboard-name-cell">%asset_name%</td>
+  <td class="dashboard-id-cell">%asset_assetid%</td>
+  <td class="dashboard-type-cell">%asset_type%</td>
+  <td class="dashboard-status-cell"><span class="small">%asset_status_description%</span></td>
+  <td class="dashboard-expiry-cell">%asset_metadata_DC.Date.valid^date_format:j/m/Y%</td>
+  <td class="dashboard-link-cell">
+    <a class="dashboard-open-link" href="%asset_url%/_edit" target="_blank">Open</a>
+    <a class="dashboard-workflow-link" href="%asset_url%/_edit?screen=workflow" target="_blank">Workflow</a>
+  </td>
+</tr>
